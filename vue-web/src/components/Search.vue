@@ -4,7 +4,6 @@
       <label>상태</label>
       <br />
       <select v-model="condition.STATE">
-        <option value=''></option>
         <option
           v-for="data in stateList"
           :key="data.STATE_SEQ"
@@ -121,6 +120,12 @@ export default {
         this.condition.SEARCH_WORD.trim() === ''
       ) {
         return true;
+      } else if(
+          this.condition.SEARCH_TYPE === '' &&
+          this.condition.SEARCH_WORD.trim() !== ''
+        ){
+          alert('검색 조건을 선택해주세요!');
+          return true;
       } else {
         return false;
       }
